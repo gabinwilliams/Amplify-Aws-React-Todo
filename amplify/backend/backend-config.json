@@ -21,6 +21,22 @@
           "SMS"
         ]
       }
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "amplifyreacttodod3a2b084",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -38,6 +54,13 @@
           "additionalAuthenticationProviders": []
         }
       }
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual"
     }
   }
 }

@@ -1,11 +1,3 @@
 {
-  "AppSyncApiName": "amplifyreacttodo",
-  "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false,
-  "AuthCognitoUserPoolId": {
-    "Fn::GetAtt": [
-      "authamplifyreacttodod3a2b084",
-      "Outputs.UserPoolId"
-    ]
-  }
+  "AppSyncApiName": "amplifyreacttodo"
 }
