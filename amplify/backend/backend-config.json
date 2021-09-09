@@ -1,6 +1,6 @@
 {
   "auth": {
-    "amplifyreacttodod3a2b084": {
+    "amplifyawsreacttodo635775c6": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -21,26 +21,10 @@
           "SMS"
         ]
       }
-    },
-    "userPoolGroups": {
-      "service": "Cognito-UserPool-Groups",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "amplifyreacttodod3a2b084",
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
-          ]
-        }
-      ]
     }
   },
   "api": {
-    "amplifyreacttodo": {
+    "amplifyawsreacttodo": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -48,7 +32,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authamplifyreacttodod3a2b084"
+              "userPoolId": "authamplifyawsreacttodo635775c6"
             }
           },
           "additionalAuthenticationProviders": []

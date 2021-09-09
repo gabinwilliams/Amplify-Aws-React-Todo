@@ -1,17 +1,20 @@
 import React, {useState} from 'react';
 import {API} from 'aws-amplify';
 import {createTodo} from './graphql/mutations';
+// import {getTodo} from './graphql/queries';
 import {withAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
 
 function App() {
 
   const [todo, setTodo] = useState([])
   const [todoData, setTodoData] = useState({name: '', description: ''})
+
   const handleAddTodo = () => {
     const name = window.prompt('Enter a name');
     const description = window.prompt('Enter a description');
 
    
+
 
     setTodo([{name, description}, ...todo])
 
@@ -19,13 +22,12 @@ function App() {
       query: createTodo, 
       variables: {input: {name, description, tags: []}},
     }).then((response) => console.log(response))
+
+ 
   }
 
-//   API.graphql({
-//     query: createTodo, 
-//     variables: {input: {name, description, tags: []}},
-//   }).then((response) => console.log(response))
-// }
+ 
+
 
   
 
