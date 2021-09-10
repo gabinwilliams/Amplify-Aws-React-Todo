@@ -38,24 +38,8 @@ This application uses the following technologies:
 - [React](https://reactjs.org/)
 
 
-(a full list of dependencies can be found in `package.json`)
 
-The project was built assuming it is hosted at /.
-You can control this with the homepage field in your package.json.
 
-The build folder is ready to be deployed.
-You may serve it with a static server:
-
-  yarn global add serve
-  serve -s build
-
-Find out more about deployment here:
-
-  bit.ly/CRA-deploy
-
-✔ Zipping artifacts completed.
-✔ Deployment complete!
-https://dev.d2uzsiviqbrecd.amplifyapp.com
 
 
 
