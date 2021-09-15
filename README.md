@@ -31,9 +31,9 @@ Before you get started, make sure you have the following software installed on y
 
 ## Built With
 
-This application uses the following technologies:
+<!-- This application uses the following technologies:
 
-- [React](https://reactjs.org/)
+- [React](https://reactjs.org/) -->
 
 
 
