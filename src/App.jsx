@@ -31,7 +31,7 @@ function App() {
   const handleAddTodo = () => {
     const name = window.prompt('Enter a name');
     const description = window.prompt('Enter a description');
-
+    const owner = 'todo';
    
 
 
@@ -39,7 +39,7 @@ function App() {
 
     API.graphql({
       query: createTodo, 
-      variables: {input: {name, description, tags: []}},
+      variables: {input: {name, owner, description, tags: []}},
     }).then((response) => console.log(response))
     
  
