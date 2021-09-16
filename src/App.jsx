@@ -1,32 +1,68 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {API, graphqlOperation, Auth} from 'aws-amplify';
 import {createTodo} from './graphql/mutations';
-import {todosByData } from './graphql/queries';
+import {todosByData, listTodos } from './graphql/queries';
 import {withAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
+
 
 function App() {
 
   const [nextToken, setNextToken] = useState(null);
   const [todo, setTodo] = useState([])
-  const [todoData, setTodoData] = useState({name: '', description: ''})
+  const [todoData, setTodoData] = useState([])
   const [loading, setLoading] = useState(false);
   const [owner, setOwner] = useState('');
 
-  async function fetchContacts() {
-    setLoading(true);
-    try {
-      const { id: owner } = await Auth.currentAuthenticatedUser();
-      const data = await API.graphql(
-        graphqlOperation(todosByData, { limit: 3, nextToken, owner })
-      );
-      setTodo([...todo, ...data.data.todosByData.items]);
-      setNextToken(data.data.todosByData.nextToken);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
+
+  useEffect(() => {
+    async function login() {
+      try {
+        await API.graphql({
+                query: listTodos 
+              }).then((response) => {
+                setTodo(response.data.listTodos.items)
+                console.log(response.data.listTodos.items);
+              })
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
+
+    login();
+  }, []);
+
+    // async function fetch() {
+    //   try {
+    //     await API.graphql({
+    //       query: listTodos 
+    //     }).then((response) => {
+    //       setTodo([response])
+    //       console.log(response);
+    //     }
+    //     )
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // API.graphql({
+    //       query: listTodos 
+    //     }).then((response) => {
+    //       setTodo([response])
+    //       console.log(response);
+    //     }
+    //     )
+
+  // }, []);
+  
+
+  // const fetchContacts = () => {
+
+  //   API.graphql({
+  //     query: listTodos 
+  //   }).then((response) => {
+  //     setTodo(response, ...todo)
+  //   }
+
+  //   )}
 
   const handleAddTodo = () => {
     const name = window.prompt('Enter a name');
@@ -45,11 +81,6 @@ function App() {
  
   }
 
- 
-
-
-  
-
   return (
     <div className="App">
       <div>
@@ -57,12 +88,18 @@ function App() {
       </div>
       <h1>Todos</h1>
       <button onClick={handleAddTodo}>Add Task</button>
-      <button onClick={fetchContacts}>Fetch tasks</button>
+      <button>Fetch tasks</button>
       <main>
-        <article>
-          <h3>Todo Title</h3>
-          <p>Todo Description</p>
+        {JSON.stringify(todo)}
+      {todo.map(task => (
+        <article 
+        key={task.id}
+        >
+          <p>Todo Title: {task.name}</p>
+          <p>Todo Description: {task.description}</p>
         </article>
+           
+        ))}
       </main>
     </div>
   );
