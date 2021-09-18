@@ -6,11 +6,11 @@ export const getTodo = /* GraphQL */ `
     getTodo(id: $id) {
       id
       name
-      owner
       description
       tags
       updatedAt
       createdAt
+      owner
     }
   }
 `;
@@ -24,11 +24,11 @@ export const listTodos = /* GraphQL */ `
       items {
         id
         name
-        owner
         description
         tags
         updatedAt
         createdAt
+        owner
       }
       nextToken
     }
@@ -36,7 +36,7 @@ export const listTodos = /* GraphQL */ `
 `;
 export const todosByData = /* GraphQL */ `
   query TodosByData(
-    $owner: String
+    $name: String
     $updatedAt: ModelStringKeyConditionInput
     $sortDirection: ModelSortDirection
     $filter: ModelTodoFilterInput
@@ -44,7 +44,7 @@ export const todosByData = /* GraphQL */ `
     $nextToken: String
   ) {
     todosByData(
-      owner: $owner
+      name: $name
       updatedAt: $updatedAt
       sortDirection: $sortDirection
       filter: $filter
@@ -54,11 +54,11 @@ export const todosByData = /* GraphQL */ `
       items {
         id
         name
-        owner
         description
         tags
         updatedAt
         createdAt
+        owner
       }
       nextToken
     }

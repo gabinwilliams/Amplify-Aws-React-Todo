@@ -1,11 +1,10 @@
 type Todo 
 @model 
 @auth(rules: [{allow: owner}, {allow: private, operations: [create, read]}])
-@key(name: "ByDate" fields: ["owner", "updatedAt"] queryField: "todosByData") 
+@key(name: "ByDate" fields: ["name", "updatedAt"] queryField: "todosByData") 
 {
   id: ID!
   name: String!
-  owner: String
   description: String
   tags: [String]!
   updatedAt: String

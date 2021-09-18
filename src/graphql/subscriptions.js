@@ -6,11 +6,11 @@ export const onCreateTodo = /* GraphQL */ `
     onCreateTodo {
       id
       name
-      owner
       description
       tags
       updatedAt
       createdAt
+      owner
     }
   }
 `;
@@ -19,11 +19,11 @@ export const onUpdateTodo = /* GraphQL */ `
     onUpdateTodo {
       id
       name
-      owner
       description
       tags
       updatedAt
       createdAt
+      owner
     }
   }
 `;
@@ -32,11 +32,11 @@ export const onDeleteTodo = /* GraphQL */ `
     onDeleteTodo {
       id
       name
-      owner
       description
       tags
       updatedAt
       createdAt
+      owner
     }
   }
 `;
